@@ -1,0 +1,107 @@
+\documentclass[letter,14pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{draftwatermark}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[overlay,remember picture]
+\color{amarillo}
+\draw[line width=14pt]
+    ($ (current page.north west) + (0.05cm,-0.1cm) $)
+    rectangle
+    ($ (current page.south east) + (-0.15cm,0.15cm) $);
+\end{tikzpicture}
+}
+
+\setmainfont[Ligatures=TeX]{Montserrat-Light.ttf}
+\newfontfamily\normalfont[Ligatures=TeX]{Montserrat-Light.ttf}
+\newfontfamily\italicafont[Ligatures=TeX]{Montserrat-LightItalic.ttf}
+\newfontfamily\mediumfont[Ligatures=TeX]{Montserrat-Medium.ttf}
+\newfontfamily\negritafont[Ligatures=TeX]{Montserrat-Regular.ttf}
+\newfontfamily\negritaitalicafont[Ligatures=TeX]{Montserrat-Italic.ttf}
+\newfontfamily\longreachfont[Ligatures=TeX]{Longreach.otf}
+
+\DeclareTextFontCommand{\normal}{\normalfont}
+\DeclareTextFontCommand{\italica}{\italicafont}
+\DeclareTextFontCommand{\medium}{\mediumfont}
+\DeclareTextFontCommand{\negrita}{\negritafont}
+\DeclareTextFontCommand{\negritaitalica}{\negritaitalicafont}
+\DeclareTextFontCommand{\longreach}{\longreachfont}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\usepackage{etoolbox}
+
+\newcommand{\footnotetextnumbering}{\alph{footnote}}
+\makeatletter
+\patchcmd{\footnote}% <cmd>
+  {\@footnotemark}% <search>
+  {\protected@xdef\@thefntextmark{\footnotetextnumbering}%
+    \@footnotemark}% <replace>
+  {}{}% <success><failure>
+\def\@makefntextmark{\hbox{\@textsuperscript{\normalfont\@thefntextmark}}}
+\patchcmd{\@makefntext}{\@makefnmark}{\@makefntextmark}{}{}
+\makeatother
+
+
+\definecolor{amarillo}{RGB}{245,184,12}
+\pagenumbering{gobble}
+\setlength{\arrayrulewidth}{4pt}
+
+\SetWatermarkText{\includegraphics[angle=-45]{Logo.png}}
+\SetWatermarkScale{0.7}
+\SetWatermarkLightness{1}
+
+\usepackage[spanish]{babel}
+\usepackage[spanish]{translator}    
+
+\deftranslation[to=spanish]{January}{Enero}
+\deftranslation[to=spanish]{February}{Febrero}
+\deftranslation[to=spanish]{March}{Marzo}
+\deftranslation[to=spanish]{April}{Abril}
+\deftranslation[to=spanish]{May}{Mayo}
+\deftranslation[to=spanish]{June}{Junio}
+\deftranslation[to=spanish]{July}{Julio}
+\deftranslation[to=spanish]{August}{Agosto}
+\deftranslation[to=spanish]{September}{Septiembre}
+\deftranslation[to=spanish]{October}{Octubre}
+\deftranslation[to=spanish]{November}{Noviembre}
+\deftranslation[to=spanish]{December}{Diciembre}
+\deftranslation[to=spanish]{Mon}{Lun}
+\deftranslation[to=spanish]{Tue}{Mar}
+\deftranslation[to=spanish]{Wed}{Mié}
+\deftranslation[to=spanish]{Thu}{Jue}
+\deftranslation[to=spanish]{Fri}{Vie}
+\deftranslation[to=spanish]{Sat}{Sab}
+\deftranslation[to=spanish]{Sun}{Dom}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{calendar}
+% \renewcommand*\familydefault{\sfdefault}
+
+% User defined
+
+\begin{document}
+
+\pagecolor{white}
+{\noindent \medium{Evangelio}}
+{\color{amarillo} \vspace{4pt} \hrule height 4pt }
+\hfill \\ \hfill
+\normal{\input{borrego/4_evangelio.tex}}
+\hfill \\ \hfill
+
+{\noindent \medium{Evangelio}}
+{\color{amarillo} \vspace{4pt} \hrule height 4pt }
+\hfill \\ \hfill
+\normal{\input{borrego/4_evangelio.tex}}
+\hfill \\ \hfill
+
+\end{document}
